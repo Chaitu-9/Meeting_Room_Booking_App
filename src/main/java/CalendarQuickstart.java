@@ -132,10 +132,11 @@ public class CalendarQuickstart {
         .setDescription("Instant meeting");
         
         Scanner input = new Scanner(System.in);
+        System.out.println("Enter the duration of the meeting");
         int meetingDuration = input.nextInt();
         
         Date startDate = new Date();
-        Date endDate = new Date(startDate.getTime() + 60000*meetingDurationx);
+        Date endDate = new Date(startDate.getTime() + 60000*meetingDuration);
         DateTime startDateTime = new DateTime(startDate);
         EventDateTime start = new EventDateTime()
         .setDateTime(startDateTime)
