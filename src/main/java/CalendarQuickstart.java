@@ -126,14 +126,17 @@ public class CalendarQuickstart {
             }
         }
         
-        Event event = new Event()
-        .setSummary("Instant Meeting")
-        .setLocation("Meeting room")
-        .setDescription("Instant meeting");
+        
         
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter the duration of the meeting");
+        System.out.println("------Enter the name of the meeting-------");
+        String meetingName = input.next();
+        System.out.println("------Enter the duration of the meeting in minutes------");
         int meetingDuration = input.nextInt();
+        
+        Event event = new Event()
+        .setSummary(meetingName)
+        .setDescription("Instant meeting");
         
         Date startDate = new Date();
         Date endDate = new Date(startDate.getTime() + 60000*meetingDuration);
@@ -151,15 +154,16 @@ public class CalendarQuickstart {
         
         
         EventAttendee[] attendees = new EventAttendee[] {
-            new EventAttendee().setEmail("ramyaps@thoughtworks.com"),
-            new EventAttendee().setEmail("icvten@gmail.com"),
+            new EventAttendee().setEmail("prasanas@thoughtworks.com"),
+            new EventAttendee().setEmail("thoughtworks.com_35333739303439372d363934@resource.calendar.google.com")
         };
         event.setAttendees(Arrays.asList(attendees));
         
         EventReminder[] reminderOverrides = new EventReminder[] {
-            new EventReminder().setMethod("email").setMinutes(24 * 60),
+            new EventReminder().setMethod("email").setMinutes(10),
             new EventReminder().setMethod("popup").setMinutes(10),
         };
+        
         Event.Reminders reminders = new Event.Reminders()
         .setUseDefault(false)
         .setOverrides(Arrays.asList(reminderOverrides));
